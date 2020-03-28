@@ -286,6 +286,7 @@
                 return firebase.database().ref('/projects/').on('value', function (snapshot) {
                     var cards = document.getElementById("customSimulations")
                     cards.innerHTML = ""
+                    cards.hidden=false
                     var items = (snapshot.val()) || 'Nothing';
                     console.log(items)
                     if (items == "Nothing") {
@@ -298,6 +299,7 @@
                             var node = document.createElement("a")
                             var breakElement = document.createElement("br")
                             node.href = items[keys[i]]["url"]
+                            //node.href.replace("https://wsquarepams.github.io/physicsEngine/", "")
                             node.innerHTML = "Custom Simulation by " + keys[i]
                             node.appendChild(breakElement)
                             cards.appendChild(node)
