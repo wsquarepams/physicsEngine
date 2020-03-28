@@ -8,6 +8,31 @@
         <link rel="stylesheet" type="text/css" href="./stylesheet.css">
         <link rel="icon" sizes="32x32" type="image/png" href="http://www.myphysicslab.com/common/myphysicsicon.png">
         <title>Physics Lab</title>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyBRkW4vTrxfsk9Tx8a88ncCjzj4ESJdS-A",
+                authDomain: "not-my-lab.firebaseapp.com",
+                databaseURL: "https://not-my-lab.firebaseio.com",
+                projectId: "not-my-lab",
+                storageBucket: "not-my-lab.appspot.com",
+                messagingSenderId: "417757365097",
+                appId: "1:417757365097:web:fd0a7e8dacb74ad1a3b3f8",
+                measurementId: "G-M5R9WNYC2L"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            var database = firebase.database()
+
+        </script>
     </head>
 
     <body>
@@ -55,9 +80,14 @@
 
         <h2>Custom Simulations</h2>
 
-        <p>
-            <a href="sims/engine2D/DoublePendulum2App-en.html?GRAVITY%3D0%3BSHOW_FORCES%3Dtrue%3BRANDOM_SEED%3D3869783400%3BELASTICITY%3D1%3BFIRING%3Dtrue%3BTIME%3D21.399999999999853%3BBLOCK1_X_POSITION%3D-2.067322657789815%3BBLOCK1_X_VELOCITY%3D-1.0427549965824547%3BBLOCK1_Y_POSITION%3D-1.3899281352807007%3BBLOCK1_Y_VELOCITY%3D-0.6613070069478543%3BBLOCK1_ANGLE%3D-15.175805357948338%3BBLOCK1_ANGULAR_VELOCITY%3D1.2396931376018137%3BBLOCK2_X_POSITION%3D-0.77995842942566%3BBLOCK2_X_VELOCITY%3D0.012390433698042257%3BBLOCK2_Y_POSITION%3D-1.6258313186491489%3BBLOCK2_Y_VELOCITY%3D-0.015440854595599117%3BBLOCK2_ANGLE%3D-4.036192049177888%3BBLOCK2_ANGULAR_VELOCITY%3D0.01979754903177633%3BBLOCK3_Y_POSITION%3D-5.495%3BBLOCK3_Y_VELOCITY%3D2.1136315770754087e-15%3BBLOCK3_ANGLE%3D1.5707963267948968%3BBLOCK3_ANGULAR_VELOCITY%3D-6.0515581802437205e-18%3B">
-                Double Pendulum Simulation (Custom)</a>
+        <div id="simulationCreate">
+            <input type="text" placeholder="Simulation URL" id="url"> <br>
+            <input type="text" placeholder="Your name" id="user"> <br>
+            <button onclick="writeData(document.getElementById('user').value, document.getElementById('url').value)">Create Custom Simulation!</button>
+        </div>
+
+        <p id="customSimulations">
+            
         </p>
 
         <h2>2D Engine Simulations</h2>
@@ -245,6 +275,37 @@
                     menu.selectedIndex = 0;
                 }
             }, /*capturing=*/ false);
+
+            function writeData(user, url) {
+                firebase.database().ref('projects/' + user).set({
+                    url: url
+                });
+            }
+
+            function readData() {
+                return firebase.database().ref('/projects/').on('value', function (snapshot) {
+                    var cards = document.getElementById("customSimulations")
+                    cards.innerHTML = ""
+                    var items = (snapshot.val()) || 'Nothing';
+                    console.log(items)
+                    if (items == "Nothing") {
+                        cards.hidden = true
+                    } else {
+                        var lengthOfItems = Object.keys(items).length
+                        keys = Object.keys(items)
+                        var itemsList = []
+                        for (var i = 0; i < lengthOfItems; i++) {
+                            var node = document.createElement("a")
+                            var breakElement = document.createElement("br")
+                            node.href = items[keys[i]]["url"]
+                            node.innerHTML = "Custom Simulation by " + keys[i]
+                            node.appendChild(breakElement)
+                            cards.appendChild(node)
+                        }
+                    }
+                });
+            }
+            readData()
 
         </script>
         <div id="footer2">
