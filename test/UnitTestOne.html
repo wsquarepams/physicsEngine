@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+* Runs a single unit test, for uncompiled debugging only.
+* The test is specified via a <script> tag, which
+* causes that unit test script to be loaded, so that its various functions
+* are defined in the global scope.  The unit test functions have names starting
+* with the word 'test' which allows them to be found by goog.testing.junit.
+*
+* The unit test is activated if one of the unit tests includes the line
+*   goog.require('goog.testing.jsunit');
+* which causes a function in jsunit to auto-execute (after all the scripts
+* on the page have loaded).  That function looks for functions in the global scope
+* whose name begins with 'test', and it then runs all those tests in alphabetic
+* order, reporting the results by inserting elements into the webpage.
+* You can also see the results in the console.
+-->
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="http://www.myphysicslab.com/common/myphysicsicon.png">
+<title>myphysicslab.test.UnitTestOne</title>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<a id="logo" href="../index-en.html">
+  <img src="../images/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+<h1>test.UnitTestOne – UNCOMPILED</h1>
+
+
+  <script src="../../closure-library/closure/goog/base.js"></script>
+  <script src="../deps.js"></script>
+  <script>
+    // goog.testing.MockClock uses goog.async.run which requires goog.DEBUG=true.
+    goog.define('goog.DEBUG', true);
+  </script>
+  <script>
+    goog.require('myphysicslab.lab.util.test.Terminal_test');
+  </script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2016 Erik Neumann">
+    Erik Neumann</a> 2016, available under
+    <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+    <br><span id="revised_date">revised Jan 23 2018 23:55</span>
+  </div>
+  <a id="valid_html" href="http://validator.w3.org/check?uri=referer;outline=1;"
+      title="check if this page is valid HTML">
+  <img  src="../images/ValidHTML401.png" alt="Valid HTML 4.01" 
+      height="31" width="88">
+  </a>
+</div>
+</body>
+</html>
