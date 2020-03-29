@@ -76,6 +76,17 @@ a:hover {
   color: red;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  cursor: pointer;
+  border-width: 3px;
+  border-color: black;
+  border-style: solid;
+}
+
 /********  CANVAS  ********/
 
 /*see also SimController.mouseDown;  it has a fix for 'cursor change while drag' */

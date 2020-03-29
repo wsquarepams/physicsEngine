@@ -1,0 +1,103 @@
+<head>
+    <title>Custom Simulations</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheet.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBRkW4vTrxfsk9Tx8a88ncCjzj4ESJdS-A",
+            authDomain: "not-my-lab.firebaseapp.com",
+            databaseURL: "https://not-my-lab.firebaseio.com",
+            projectId: "not-my-lab",
+            storageBucket: "not-my-lab.appspot.com",
+            messagingSenderId: "417757365097",
+            appId: "1:417757365097:web:fd0a7e8dacb74ad1a3b3f8",
+            measurementId: "G-M5R9WNYC2L"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database()
+
+    </script>
+</head>
+
+<h2>Custom Simulations</h2>
+
+<div id="simulationCreate">
+    <input type="text" placeholder="Simulation URL" id="url"> <br>
+    <input type="text" placeholder="Your name" id="user"> <br>
+    <button onclick="submit()">Create Custom Simulation!</button>
+</div>
+
+<p id="customSimulations">
+
+</p>
+
+<script>
+    var atcode = 0
+
+    function writeData(user, url) {
+        firebase.database().ref('projects/' + atcode).set({
+            user: user,
+            url: url
+        });
+    }
+
+    function readData() {
+        return firebase.database().ref('/projects/').on('value', function (snapshot) {
+            var cards = document.getElementById("customSimulations")
+            cards.innerHTML = ""
+            cards.hidden = false
+            var items = (snapshot.val()) || 'Nothing';
+            var lengthOfItems = Object.keys(items).length
+
+            console.log(items)
+            if (items == "Nothing") {
+                cards.hidden = true
+                atcode = 0
+            } else {
+                atcode = lengthOfItems + 1
+                keys = Object.keys(items)
+                var itemsList = []
+                for (var i = 0; i < lengthOfItems; i++) {
+                    var node = document.createElement("a")
+                    var breakElement = document.createElement("br")
+                    node.href = items[keys[i]]["url"]
+                    //node.href.replace("https://wsquarepams.github.io/physicsEngine/", "")
+                    node.innerHTML = "Custom Simulation by " + items[keys[i]]["user"]
+                    node.appendChild(breakElement)
+                    cards.appendChild(node)
+                }
+            }
+        });
+        var user = localStorage.getItem("sender")
+        if (user !== undefined) {
+            user = document.getElementById("user")
+            localStorage.setItem("sender", user)
+        } else {
+            location = "login.html"
+        }
+    }
+
+    function submit() {
+        var user = localStorage.getItem("sender")
+        var url = document.getElementById('url').value
+        if (user == "" || url == "") {
+            alert("Please type in information first.")
+        } else {
+            if (user === undefined) {
+                user = document.getElementById("user")
+                localStorage.setItem("sender", user)
+            }
+            writeData(user, url)
+        }
+    }
+    readData()
+
+</script>

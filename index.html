@@ -1,38 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="./stylesheet.css">
         <link rel="icon" sizes="32x32" type="image/png" href="http://www.myphysicslab.com/common/myphysicsicon.png">
         <title>Physics Lab</title>
-
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
-
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#available-libraries -->
-        <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
-
-        <script>
-            // Your web app's Firebase configuration
-            var firebaseConfig = {
-                apiKey: "AIzaSyBRkW4vTrxfsk9Tx8a88ncCjzj4ESJdS-A",
-                authDomain: "not-my-lab.firebaseapp.com",
-                databaseURL: "https://not-my-lab.firebaseio.com",
-                projectId: "not-my-lab",
-                storageBucket: "not-my-lab.appspot.com",
-                messagingSenderId: "417757365097",
-                appId: "1:417757365097:web:fd0a7e8dacb74ad1a3b3f8",
-                measurementId: "G-M5R9WNYC2L"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            var database = firebase.database()
-
-        </script>
     </head>
 
     <body>
@@ -40,7 +13,7 @@
             <img src="./images/myphysicslogo.png" width="162" height="32">
         </a>
 
-        <h1>Click on a link below, sit back and relax!</h1>
+        <h1>Click on a button and select a simulation!</h1>
 
         <ul id="header_bar">
             <div>
@@ -69,206 +42,27 @@
             for finished versions of these simulations.
         </p>
 
-        <h2>Empty Simulations (Coding Required)</h2>
+        <h2 onclick="location = 'emptySimulations.html'" class="clickable">Empty Simulations (Coding Required)</h2>
 
-        <p>
-            <a href="sims/engine2D/BlankApp-en.html">
-                Blank Simulation</a> <br>
-            <a href="sims/experimental/BlankSlateApp-en.html">
-                Blank Slate Simulation</a> <br>
-        </p>
+        <h2 onclick="location = 'customSimulations.html'" class="clickable">Custom Simulations</h2>
 
-        <h2>Custom Simulations</h2>
+        <h2 onclick="location = '2DEngineSimulations.html'" class="clickable">2D Engine Simulations</h2>
 
-        <div id="simulationCreate">
-            <input type="text" placeholder="Simulation URL" id="url"> <br>
-            <input type="text" placeholder="Your name" id="user"> <br>
-            <button onclick="writeData(document.getElementById('user').value, document.getElementById('url').value)">Create Custom Simulation!</button>
-        </div>
+        <h2 onclick="location = 'experimentalApplications.html'" class="clickable">Experimental Applications</h2>
 
-        <p id="customSimulations">
-            
-        </p>
+        <h2 onclick="location = 'PDESimulations.html'" class="clickable">PDE Simulations</h2>
 
-        <h2>2D Engine Simulations</h2>
+        <h2 onclick="location = 'pendulumSimulations.html'" class="clickable">Pendulum Simulations</h2>
 
-        <p>
-            <a href="sims/engine2D/BilliardsApp-en.html">
-                Billards Simulation</a> <br>
-            <a href="sims/engine2D/CarSuspensionApp-en.html">
-                Car Suspension Simulation</a> <br>
-            <a href="sims/engine2D/CartPendulum2App-en.html">
-                Cart Pendulum Simulation (Second version)</a> <br>
-            <a href="sims/engine2D/ChainApp-en.html">
-                Chain Simulation</a> <br>
-            <a href="sims/engine2D/ContactApp-en.html">
-                Shape Contact Simulation</a> <br>
-            <a href="sims/engine2D/CurvedTestApp-en.html">
-                Curved Shape Contact Simulation</a> <br>
-            <a href="sims/engine2D/DoNothingApp-en.html">
-                "Do Nothing" Simulation</a> <br>
-            <a href="sims/engine2D/DoublePendulum2App-en.html">
-                Double Pendulum Simulation (Second Version)</a> <br>
-            <a href="sims/engine2D/FastBallApp-en.html">
-                Fast Ball Simulation</a> <br>
-            <a href="sims/engine2D/GearsApp-en.html">
-                Gear Simulation</a> <br>
-            <a href="sims/engine2D/ImpulseApp-en.html">
-                Impulse Simulation</a> <br>
-            <a href="sims/engine2D/MarsMoonApp-en.html">
-                Mars Moon Simulation</a> <br>
-            <a href="sims/engine2D/MultipleCollisionApp-en.html">
-                Multiple Collisions Simulation</a> <br>
-            <a href="sims/engine2D/MutualAttractApp-en.html">
-                Gravitational Attraction Simulation</a> <br>
-            <a href="sims/engine2D/NewtonsCradleApp-en.html">
-                Newton's Cradle Simulation</a> <br>
-            <a href="sims/engine2D/PendulumClockApp-en.html">
-                Pendulum Clock Simulation</a> <br>
-            <a href="sims/engine2D/PendulumSpringApp-en.html">
-                Pendulum Spring Simulation</a> <br>
-            <a href="sims/engine2D/PileApp-en.html">
-                Pile Simulation</a> <br>
-            <a href="sims/engine2D/PileAttractApp-en.html">
-                Pile Attraction Simulation</a> <br>
-            <a href="sims/engine2D/PolygonTestApp-en.html">
-                Polygon Test Simulation</a> <br>
-            <a href="sims/engine2D/RigidBodyApp-en.html">
-                Rigid Body Simulation</a> <br>
-        </p>
+        <h2 onclick="location = 'rollerCoasterSimulations.html'" class="clickable">Roller Coaster Simulations</h2>
 
-        <h2>Experimental Applications</h2>
+        <h2 onclick="location = 'springSimulations.html'" class="clickable">Spring Simulations</h2>
 
-        <p>
-
-            <a href="sims/experimental/BikeTimerApp-en.html">
-                Bike Timer App</a> <br>
-            <a href="sims/experimental/GraphCalcApp-en.html">
-                Graph Calculation App</a> <br>
-            <a href="sims/experimental/GraphCalc2App-en.html">
-                Graph Calculation App (Second Version)</a> <br>
-            <a href="sims/experimental/MultiGraphCalc2App-en.html">
-                Multiple Graph Calculation App</a> <br>
-            <a href="sims/experimental/SimpleApp-en.html">
-                "Simple" App</a> <br>
-        </p>
-
-        <h2>PDE Simulations</h2>
-
-        <p>
-            <a href="sims/pde/StringApp-en.html">
-                String Simulation</a> <br>
-        </p>
-
-        <h2>Pendulum Simulations</h2>
-
-        <p>
-
-            <a href="sims/pendulum/CartPendulumApp-en.html">
-                Cart Pendulum Simulation</a> <br>
-            <a href="sims/pendulum/CompareDoublePendulumApp-en.html">
-                Double Pendulum Compare Simulation</a> <br>
-            <a href="sims/pendulum/ComparePendulumApp-en.html">
-                Compare Pendulum Simulation</a> <br>
-            <a href="sims/pendulum/DoublePendulumApp-en.html">
-                Double Pendulum Simulation</a> <br>
-            <a href="sims/pendulum/MoveableDoublePendulumApp-en.html">
-                Moveable Double Pendulum Simulation</a> <br>
-            <a href="sims/pendulum/MoveablePendulumApp-en.html">
-                Movable Pendulum Simulation</a> <br>
-            <a href="sims/pendulum/PendulumApp-en.html">
-                Pendulum Simulation</a> <br>
-            <a href="sims/pendulum/ReactionPendulumApp-en.html">
-                Reaction Pendulum Simulation</a> <br>
-            <a href="sims/pendulum/RigidDoublePendulumApp-en.html">
-                Rigid Double Pendulum Simulation</a> <br>
-            <a href="sims/pendulum/VectorGraphPendulumApp-en.html">
-                Vector Graph Pendulum Simulation</a> <br>
-        </p>
-
-        <h2>Roller Coaster Simulations</h2>
-
-        <p>
-            <a href="sims/roller/BrachistoApp-en.html">
-                Brachisto Simulation</a> <br>
-            <a href="sims/roller/LagrangeRollerApp-en.html">
-                Lagrange Roller Simulaion</a> <br>
-            <a href="sims/roller/RigidBodyRollerApp-en.html">
-                Rigid Body Roller Simulation</a> <br>
-            <a href="sims/roller/RollerDoubleApp-en.html">
-                Double Roller Simulation</a> <br>
-            <a href="sims/roller/RollerFlightApp-en.html">
-                Flying Roller Simulation</a> <br>
-            <a href="sims/roller/RollerSingleApp-en.html">
-                Single Roller Simulation</a> <br>
-            <a href="sims/roller/RollerSpringApp-en.html">
-                Roller Spring Simulation</a> <br>
-        </p>
-
-        <h2>Spring Simulations</h2>
-
-        <p>
-            <a href="sims/springs/ChainOfSpringsApp-en.html">
-                sims/springs/ChainOfSpringsApp</a> <br>
-            <a href="sims/springs/CollideBlocksApp-en.html">
-                sims/springs/CollideBlocksApp</a> <br>
-            <a href="sims/springs/CollideSpringApp-en.html">
-                sims/springs/CollideSpringApp</a> <br>
-            <a href="sims/springs/DangleStickApp-en.html">
-                sims/springs/DangleStickApp</a> <br>
-            <a href="sims/springs/Double2DSpringApp-en.html">
-                sims/springs/Double2DSpringApp</a> <br>
-            <a href="sims/springs/DoubleSpringApp-en.html">
-                sims/springs/DoubleSpringApp</a> <br>
-            <a href="sims/springs/Molecule1App-en.html">
-                sims/springs/Molecule1App</a> <br>
-            <a href="sims/springs/Molecule3App-en.html">
-                sims/springs/Molecule3App</a> <br>
-            <a href="sims/springs/Molecule4App-en.html">
-                sims/springs/Molecule4App</a> <br>
-            <a href="sims/springs/Molecule5App-en.html">
-                sims/springs/Molecule5App</a> <br>
-            <a href="sims/springs/Molecule6App-en.html">
-                sims/springs/Molecule6App</a> <br>
-            <a href="sims/springs/MultiSpringApp-en.html">
-                sims/springs/MultiSpringApp</a> <br>
-            <a href="sims/springs/SingleSpringApp-en.html">
-                sims/springs/SingleSpringApp</a> <br>
-            <a href="sims/springs/SingleSpring2App-en.html">
-                sims/springs/SingleSpring2App</a> <br>
-            <a href="sims/springs/Spring2DApp-en.html">
-                sims/springs/Spring2DApp</a> <br>
-            <a href="sims/springs/TerminalSpringApp-en.html">
-                sims/springs/TerminalSpringApp</a> <br>
-            <a href="sims/springs/TerminalSpring2DApp-en.html">
-                sims/springs/TerminalSpring2DApp</a> <br>
-        </p>
-
-        <h2 style="color:red; margin-bottom: 0px;">Engine Tests</h2>
+        <h2 style="color:red; margin-bottom: 0px; cursor:pointer;" onclick="location = 'engineTests.html'">Engine Tests</h2>
         <small style="color:red; margin-bottom: 10px;">Warning: Misuse of these tests may result in the website
             breaking.</small> <br>
 
-        <p>
-            <a href="test/Engine2DTests-en.html">
-                test/Engine2DTests</a> <br>
-            <a href="test/PerformanceTests-en.html">
-                test/PerformanceTests</a> <br>
-            <a href="test/SingleTest-en.html">
-                test/SingleTest</a> <br>
-            <a href="test/SingleViewerApp-en.html">
-                test/SingleViewerApp</a> <br>
-            <a href="test/StuckTestApp-en.html">
-                test/StuckTestApp</a> <br>
-            <a href="test/TestViewerApp-en.html">
-                test/TestViewerApp</a> <br>
-            <a href="test/UnitTest-en.html">
-                test/UnitTest</a> <br>
-            <a href="sims/engine2D/TestBodyApp-en.html">
-                Body Test Simulation</a> <br>
-        </p>
-
         <script>
-            var atcode = 0
             window.addEventListener('pageshow', function (event) {
                 // set language menu to correct language
                 var menu = document.getElementById('language_menu');
@@ -276,44 +70,6 @@
                     menu.selectedIndex = 0;
                 }
             }, /*capturing=*/ false);
-
-            function writeData(user, url) {
-                firebase.database().ref('projects/' + atcode).set({
-                    user: user,
-                    url: url
-                });
-            }
-
-            function readData() {
-                return firebase.database().ref('/projects/').on('value', function (snapshot) {
-                    var cards = document.getElementById("customSimulations")
-                    cards.innerHTML = ""
-                    cards.hidden=false
-                    var items = (snapshot.val()) || 'Nothing';
-                    var lengthOfItems = Object.keys(items).length
-                    
-                    console.log(items)
-                    if (items == "Nothing") {
-                        cards.hidden = true
-                        atcode = 0
-                    } else {
-                        atcode = lengthOfItems + 1
-                        keys = Object.keys(items)
-                        var itemsList = []
-                        for (var i = 0; i < lengthOfItems; i++) {
-                            var node = document.createElement("a")
-                            var breakElement = document.createElement("br")
-                            node.href = items[keys[i]]["url"]
-                            //node.href.replace("https://wsquarepams.github.io/physicsEngine/", "")
-                            node.innerHTML = "Custom Simulation by " + items[keys[i]]["user"]
-                            node.appendChild(breakElement)
-                            cards.appendChild(node)
-                        }
-                    }
-                });
-            }
-            readData()
-
         </script>
         <div id="footer2">
             <div id="copyright">
